@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  
-  devise_for :admins
+
+  devise_for :admin
   devise_for :customers
   # 会員側のルーティング設定
   scope module: :public do
     root to: "homes#top"
     get 'homes/about'
-    
+
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:show]
     get 'customers/quit'
@@ -14,12 +14,12 @@ Rails.application.routes.draw do
     resources :orders, only: [:new,:index,:show]
     resources :deliveries, only: [:index,:edit]
   end
-  
+
   # 管理者側のルーティング設定
   namespace :admin do
     get 'homes/top'
-    resources :items, only: [:new,:index,:show,:edit]
-    resources :genres, only: [:index,:edit]
+    resources :items, only: [:new,:index,:create,:show,:edit,:update]
+    resources :genres, only: [:index,:create,:edit,:update]
     resources :customers, only: [:index,:show,:edit]
     resources :orders, only: [:show]
   end
