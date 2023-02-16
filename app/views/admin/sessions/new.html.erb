@@ -1,0 +1,28 @@
+<div class="admin-sign-in">
+  <div class="admin-sign-in-title">
+    <h3>管理者ログイン</h3>
+  </div>
+
+  <div class="admin-sign-in-table">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <tabie>
+        <tr class="admin-sign-in-field">
+          <th><%= f.label :メールアドレス %></th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "textlines-radius" %></td>
+        </tr>
+
+        <tr class="admin-sign-in-field">
+          <th><%= f.label :パスワード %></th>
+          <td><%= f.password_field :password, autocomplete: "current-password", class: "textlines-radius" %></td>
+        </tr>
+
+        <tr class="admin-sign-in-actions">
+          <td><%= f.submit "ログイン", class: "btn btn-primary col-4" %></td>
+        </tr>
+      </tabie>
+    <% end %>
+  </div>
+
+  <%= render "admin/shared/links" %>
+
+</div>
