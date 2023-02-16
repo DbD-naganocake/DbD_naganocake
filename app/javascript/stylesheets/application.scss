@@ -1,0 +1,7 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+// FontAwesomeをrailsで使う際は以下のようにブロックを用いて記述します。
+
+// <%= link_to リンク先path do %>
+  // <i class="fontawesomeのクラス"></i>
+// <% end %>

@@ -9,3 +9,5 @@ class Customer < ApplicationRecord
   has_many :deliveries
   
 end
+# customer（会員）はたくさんのcart_item(注文商品),orders(注文),deliveries(配送先)を持っている
+# dependent: :destroy（親モデルを削除する際に、その親モデルに紐づく「子モデル」も一緒に削除できる）は必要？
