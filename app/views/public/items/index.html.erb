@@ -1,2 +1,12 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class= "row">
+  <div class= "col-md-3">
+    <%= render 'sidebar', genres: @genres %>
+  </div>
+  <div class= "col-md-9">
+    <h3 class= "title">商品一覧
+      <span>(全<%= @items.total_count %>件中/ <%= @items.count %>件表示)</span>
+    </h3>
+    <%= render 'item_index', items: @items %>
+  </div>
+  <%= paginate @items %>
+</div>
