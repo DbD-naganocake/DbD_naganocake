@@ -11,7 +11,7 @@
             <%= item.name %>
           </div>
           <div class= "without_tax">
-            <%= (item.without_tax).to_s(:delimited) %>(税別)
+            <%= (item.without_tax * 110 / 100).to_s(:delimited) %>(税込)
           </div>
         </div>
       </div>

@@ -1,2 +1,35 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class= "row">
+  <div class= "col-md-3">
+    <%= render 'sidebar', genres: @genres %>
+  </div>
+  <div class= "col-md-9">
+    <div class= "item-info row">
+      <div class= "col-md-6">
+        <div class= "item-info-image">
+          <!--attachment_image_tag(item, :image, size: '400×300', fallback: "脱出ケーキ") -->
+        </div>
+        <div class= "col-md-6">
+          <h3 class= "item-info-name">
+            <%= @item.name %>
+          </h3>
+          <div class= "item-info-item_caption">
+            <p><%= @item.item_caption %></p>
+          </div>
+          <div class= "item-info-without_tax">
+            <h4><%= "¥#{(@item.without_tax * 110 / 100).to_s(delimited)}" %>
+              <span>(税込)</span>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class= "item-count-form text-right">
+        <%= form_for @cart_item do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <span id= "item-count">個数</span>
+          <%= f.select :item_count, (1..50), class: "item-count-select" %>
+          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

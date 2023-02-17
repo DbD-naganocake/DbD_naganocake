@@ -1,15 +1,16 @@
 class Public::ItemsController < ApplicationController
   def index
-    @item = Item.new
+    @item = Item.all
     @items = Item.page(params[:page]).per(8)
-    @genres = Genre.where(status: true)
+    @genres = Genre.all
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :item_image, :without_tax)
+    params.require(:item).permit(:genre_id, :item_name, :item_image, :without_tax)
   end
 end
