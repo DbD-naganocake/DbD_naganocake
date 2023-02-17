@@ -1,12 +1,37 @@
-<div class= "row">
-  <div class= "col-md-3">
-    <%= render 'sidebar', genres: @genres %>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-md-3 mt-5">
+      <%= render "sidebar", genres: @genres %>
+    </div>
+    <div class= "col-md-9 my-5">
+      <h2 class= "product-headline head-line text-left">
+        <% if @genre.present? %>
+          <%= @genre.name %>
+        <% else %>
+          商品一覧
+        <% end %>
+        <span>(全<%= @items.total_count %>件中　<%= @items.count %></span>
+      </h2>
+    </div>
   </div>
-  <div class= "col-md-9">
-    <h3 class= "title">商品一覧
-      <span>(全<%= @items.total_count %>件中/ <%= @items.count %>件表示)</span>
-    </h3>
-    <%= render 'item_index', items: @items %>
+  <div class= "row">
+    <% @items.each do |item| %>
+      <div class= "col-md-3 mt-5">
+        <div class= "item_image">
+          <%= link_to item_path(item) do %>
+            <%= image_tag item.get_image, size: "100×100" %>
+          <% end %>
+        </div>
+        <p class= "item_name">
+          <%= item.name %>
+        </p>
+        <% if item.sale_status == true %>
+          <p>¥<%= item.without_tax.to_s(:delimited) %></p>
+        <% else %>
+          <p class= "soldout">売り切れ中</p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <%= paginate @items %>
 </div>
