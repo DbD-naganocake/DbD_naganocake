@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   # 会員側のルーティング設定
   scope module: :public do
     root to: "homes#top"
-    get 'homes/about'
-
+    get "about" => "homes#about"
+    
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:show]
     get 'customers/quit'
@@ -25,7 +25,8 @@ Rails.application.routes.draw do
 
   # 管理者側のルーティング設定
   namespace :admin do
-    get 'homes/top'
+    get "admin" => "homes/top"
+    
     resources :items, only: [:new,:index,:show,:edit]
     resources :genres, only: [:index,:edit]
     resources :customers, only: [:index,:show,:edit]
