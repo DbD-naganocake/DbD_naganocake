@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
 
-  devise_for :admin
-  devise_for :customers
+
+  devise_for :customers, controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  devise_for :admin, controllers: {
+    sessions: "admin/sessions"
+  }
+
+
   # 会員側のルーティング設定
   scope module: :public do
     root to: "homes#top"
-    get 'homes/about'
+    get "about" => "homes#about"
 
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:show]
@@ -21,9 +30,10 @@ Rails.application.routes.draw do
 
   # 管理者側のルーティング設定
   namespace :admin do
-    get 'homes/top'
-    resources :items, only: [:new,:index,:show,:edit]
-    resources :genres, only: [:index,:edit]
+    get "admin" => "homes#top"
+
+    resources :items, only: [:new,:index,:create,:show,:edit,:update]
+    resources :genres, only: [:index,:create,:edit,:update]
     resources :customers, only: [:index,:show,:edit]
     resources :orders, only: [:show]
   end
