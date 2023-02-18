@@ -24,9 +24,10 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-  def withdrawal
+  def withdraw
     @customer = Customer.find(params[:id])
-    @customer.update(is_deleted: false)
+    @customer.update(is_deleted: true)
+
     reset_session
     # 「reset_session」は全てのsessionを削除します
     flash[:notice] = "退会処理を実行いたしました"
