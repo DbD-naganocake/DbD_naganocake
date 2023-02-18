@@ -1,0 +1,33 @@
+<div class="public-session">
+  <div class="public-session-title">
+    <h3>ログイン</h3>
+  </div>
+
+  <h4>会員の方はこちらからログイン</h4>
+
+  <div class="public-session-table">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+      <table>
+        <tr class="public-session-field">
+          <th><%= f.label :"メールアドレス" %></th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 25, class: "textlines-radius" %></td>
+        </tr>
+      
+         <tr class="public-session-field">
+          <th><%= f.label :"パスワード" %></th>
+          <td><%= f.password_field :password, autocomplete: "current-password", size: 25, class: "textlines-radius" %></td>
+        </tr>
+      
+        <tr class="public-session-actions">
+          <td></td>
+          <td><%= f.submit "ログイン", class: "btn btn-success" %></td>
+        </tr>
+      </table>
+        
+    <% end %>
+  </div>
+
+  <%= render "public/shared/links" %>
+  
+</div>
