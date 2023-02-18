@@ -1,4 +1,4 @@
 class Delivery < ApplicationRecord
   
-  belongs_to :customers
+  belongs_to :customer
 end
