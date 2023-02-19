@@ -12,6 +12,13 @@
         <% end %>
       </div>
 
+      <div class="user-name">
+        <br>
+        <% if customer_signed_in? %>
+          <p>ようこそ、<%= current_customer.last_name %>様</p>
+        <% end %>
+      </div>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
