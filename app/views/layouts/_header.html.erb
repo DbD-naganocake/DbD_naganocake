@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
 
+      
       <div class="navbar-brand">
         <% if admin_signed_in? %>
           <%= image_tag 'logo.png', :size => '100x100' %>
@@ -15,7 +16,7 @@
       <div class="user-name">
         <br>
         <% if customer_signed_in? %>
-          <p>ようこそ、<%= current_customer.last_name %>様</p>
+          <p><b>ようこそ、<%= current_customer.last_name %>様</b></p>
         <% end %>
       </div>
 
@@ -100,7 +101,14 @@
 
         <% end %>
         </ul>
+        
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search </button>
+        </form>
+        
       </div>
+
 
     </div>
   </nav>
