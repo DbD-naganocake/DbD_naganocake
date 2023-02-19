@@ -23,14 +23,17 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#quit'
     patch 'customers/withdraw' => 'customers#withdraw'
-    resources :cart_items, only: [:index]
-    resources :orders, only: [:new,:index,:show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all_cart_items"
+    resources :orders, only: [:new,:index,:show,:create]
+    post "/orders/confirm" => "orders#confirm"
+    get "/orders/complete" => "orders#complete"
     resources :deliveries, only: [:index,:edit]
   end
 
   # 管理者側のルーティング設定
   namespace :admin do
-    get "admin" => "homes#top"
+    get "" => "homes#top"
 
     resources :items, only: [:new,:index,:create,:show,:edit,:update]
     resources :genres, only: [:index,:create,:edit,:update]
