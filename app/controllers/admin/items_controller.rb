@@ -7,14 +7,14 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_items_path(@item), notice: "商品を登録しました。"
+      redirect_to admin_items_path, notice: "商品を登録しました。"
     else
       render :new
     end
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def show

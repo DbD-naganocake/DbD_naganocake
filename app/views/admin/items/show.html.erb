@@ -1,38 +1,55 @@
-<h3>商品詳細</h3>
-
-
-  <table>
-    <tbody>
-      <tr>
-        <td>商品名</td>
-        <td><%= @item.item_name %></td>
-      </tr>
-      <tr>
-        <td>商品説明</td>
-        <td><%= @item.item_caption %></td>
-      </tr>
-      <tr>
-        <td>ジャンル</td>
-        <td><%= @item.genre.genre_name %></td>
-      </tr>
-      <tr>
-        <td>税込み価格（税抜価格）</htdd>
-        <td><%= @item.with_tax.to_s(:delimited) %>(<%= @item.without_tax.to_s(:delimited) %>) 円</span></td>
-      </tr>
-      <tr>
-        <td>販売ステータス</td>
-        <td>
-          <% if @item.sale_status == true %>
-            販売中
-          <% else %>
-            販売中止中
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-<%= link_to edit_admin_item_path(@item.id) do %>
-  <button>
-    編集する
-  </button>
-<% end %>
+<div class="container">
+  <div class="row" style="margin-top:25px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h3>商品詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 text-right mx-auto mb-5">
+      <%= image_tag @item.get_image(200, 200) %>
+    </div>
+    <div class="col-sm-6 mx-auto">
+      <table class="table table-borderless text-secondary d-flex text-align">
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><%= @item.item_name %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.item_caption %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre.genre_name %></td>
+          </tr>
+          <tr>
+            <td>税込み価格（税抜価格）</htdd>
+            <td><%= @item.with_tax.to_s(:delimited) %>(<%= @item.without_tax.to_s(:delimited) %>) 円</span></td>
+          </tr>
+          <tr>
+            <td>販売状況</td>
+            <td>
+              <% if @item.sale_status == true %>
+                販売中
+              <% else %>
+                販売中止中
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="text-center">
+      <%= link_to edit_admin_item_path(@item.id) do %>
+        <button class="btn btn-success btn-md">
+          編集する
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>

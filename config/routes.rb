@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   # 管理者側のルーティング設定
   namespace :admin do
-    get "admin" => "homes#top"
+    get "" => "homes#top"
 
     resources :items, only: [:new,:index,:create,:show,:edit,:update]
     resources :genres, only: [:index,:create,:edit,:update]
