@@ -23,7 +23,7 @@
           <% end %>
         </div>
         <p class= "item_name">
-          <%= item.name %>
+          <%= item.item_name %>
         </p>
         <% if item.sale_status == true %>
           <p>¥<%= item.without_tax.to_s(:delimited) %></p>
