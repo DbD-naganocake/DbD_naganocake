@@ -19,11 +19,11 @@
       <div class= "col-md-3 mt-5">
         <div class= "item_image">
           <%= link_to item_path(item) do %>
-            <%= image_tag item.(100, 100) %>
+            <%= image_tag item.get_image(100, 100) %>
           <% end %>
         </div>
         <p class= "item_name">
-          <%= item.name %>
+          <%= item.item_name %>
         </p>
         <% if item.sale_status == true %>
           <p>¥<%= item.without_tax.to_s(:delimited) %></p>
