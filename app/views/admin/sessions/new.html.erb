@@ -1,7 +1,8 @@
 <div class="admin-sign-in">
   <div class="admin-sign-in-title">
-    <h3>管理者ログイン</h3>
+    <h5><b>管理者ログイン</b></h5>
   </div>
+  
 
   <div class="admin-sign-in-table">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -10,14 +11,18 @@
           <th><%= f.label :メールアドレス %></th>
           <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "textlines-radius" %></td>
         </tr>
-
+        
+        <br>
+        
         <tr class="admin-sign-in-field">
           <th><%= f.label :パスワード %></th>
           <td><%= f.password_field :password, autocomplete: "current-password", class: "textlines-radius" %></td>
         </tr>
-
+        
+        <br>
+        
         <tr class="admin-sign-in-actions">
-          <td><%= f.submit "ログイン", class: "btn btn-primary col-4" %></td>
+          <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
         </tr>
       </tabie>
     <% end %>
