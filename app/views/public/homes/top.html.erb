@@ -26,11 +26,11 @@
               <div class="top-item">
                 <p>
                   <%= link_to(item) do %>
-                    <%= image_tag item.item_image, size: "150x150" %>
+                    <%= image_tag item.get_image(120, 120) %>
                   <% end %>
                 </p>
                 <p><%= item.item_name %></p>
-                <p>¥<%= item.without_tax　%></p>
+                <p>¥<%= item.without_tax %></p>
               </div>
             <% end %>
           </div>
