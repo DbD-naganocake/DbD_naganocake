@@ -1,2 +1,36 @@
 <!--配送先編集-->
 <!--郵便番号（ハイフンなし）住所　宛名　変更内容を保存-->
+<% if @delivery.errors.any? %>
+  <%= @delivery.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @delivery.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class="container px-5 px-sm-0">
+  <div class= "row">
+    <div class="col-md-10 offset-md-1">
+      <span style="background-color:#f4f4f4">　配送先編集　</span>
+
+       <%= form_with model: @delivery, url: delivery_path(@delivery), method: :patch, local: true do |f| %>
+         <table style="margin-bottom:40px">
+           <tr>
+             <td>郵便番号(ハイフンなし)　　</td>
+             <td><%= f.text_field :delivery_post, placeholder: "0000000" %></td>
+             <td colspan="1"></td>
+           </tr>
+           <tr>
+             <td>住所</td>
+             <td><%= f.text_field :delivery_address, size: "45x20", placeholder: "山梨県北杜市白州町自元寺" %>　</td>
+           </tr>
+           <tr>
+             <td>宛名</td>
+             <td><%= f.text_field :name, placeholder: "馬場信春" %></td>
+             <td class="text-right"><%= f.submit '変更内容を保存', class:"btn btn-success" %></td>
+           </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

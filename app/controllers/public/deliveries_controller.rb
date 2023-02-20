@@ -23,8 +23,11 @@ class Public::DeliveriesController < ApplicationController
 
   def update
     @delivery = Delivery.find(params[:id])
-    @delivery.update(delivery_params)
-    redirect_to deliveries_path(@delivery)
+    if @delivery.update(delivery_params)
+    redirect_to deliveries_path(@delivery), notice: "you have update delivery_info successfully"
+    else
+      render "edit"
+    end
   end
 
   def destroy
