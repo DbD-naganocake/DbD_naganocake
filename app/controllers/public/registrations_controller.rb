@@ -65,9 +65,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:kana_name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:kana_name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:post_cord])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:kana_last])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:kana_first])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:post_code])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:address])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:telephone])
   end

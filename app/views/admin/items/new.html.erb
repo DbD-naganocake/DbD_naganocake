@@ -1,14 +1,5 @@
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@item.errors.count, "error") %> prohibited this obj from being saved:</h3>
-    <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 <div class="container">
+  <%= render 'layouts/errors', obj: @item %>
   <div class="row">
    <div class="col-sm-8 px-sm-0 offset-sm-1">
       <h1>商品新規登録</h1>
@@ -49,12 +40,6 @@
           </td>
         </tr>
       </table>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <div class="text-center">
       <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
     <% end %>
     </div>
