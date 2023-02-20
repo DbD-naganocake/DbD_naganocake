@@ -1,25 +1,47 @@
 <div class="top">
-  <div class="top-text-img">
-    <div class="top-text">
-      <h2>
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-      </h2>
-    </div>
-  </div>
- 
-  <div class="top-items">
-    <h2>新着商品</h2>
-    <div class="new-item">
+  <div class= "container">
+    <div class= "row">
       
+      <div class= "col-md-3 mt-5">
+        <%= render "public/items/sidebar", genres: @genres %>
+      </div>
+      
+      <div class= "col-md-9 my-5">
+        <div class="top-text-img">
+          <div class="top-text">
+            <h4><b>
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </h4></b>
+          </div>
+        </div>
+       
+        <div class="top-items">
+          <h4><b>新着商品</b></h4>
+          
+          <div class="new-item">
+            <% @items.first(4).each do |item| %>
+              <div class="top-item">
+                <p>
+                  <%= link_to(item) do %>
+                    <%= image_tag item.item_image, size: "150x150" %>
+                  <% end %>
+                </p>
+                <p><%= item.item_name %></p>
+                <p>¥<%= item.without_tax　%></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+          
+        <div class="float-right items-link">
+          <%= link_to "全ての商品を見る >", items_path %>
+        </div>
+      
+        
+      </div>
     </div>
-    
-    <div class="items-link">
-      <%= link_to "全ての商品を見る >", items_path %>
-    </div>
-
   </div>
- 
 </div>
