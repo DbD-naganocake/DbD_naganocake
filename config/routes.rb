@@ -17,20 +17,20 @@ Rails.application.routes.draw do
     get "about" => "homes#about"
 
     resources :items, only: [:index,:show]
-    resources :customers, only: [:edit,:show]
+    # resources :customers, only: [:edit,:show] 今回はいらない　アンスクライブをクワイトに統一
     get "/customers/my_page" => "customers#show"
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#quit'
+    get 'customers/quit' => 'customers#quit'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :cart_items, only: [:index]
     resources :orders, only: [:new,:index,:show]
-    resources :deliveries, only: [:index,:edit]
+    resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
   end
 
   # 管理者側のルーティング設定
   namespace :admin do
-    get "admin" => "homes#top"
+    get "" => "homes#top"
 
     resources :items, only: [:new,:index,:create,:show,:edit,:update]
     resources :genres, only: [:index,:create,:edit,:update]
