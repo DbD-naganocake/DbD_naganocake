@@ -17,18 +17,19 @@ Rails.application.routes.draw do
     get "about" => "homes#about"
 
     resources :items, only: [:index,:show]
-    resources :customers, only: [:edit,:show]
+    # resources :customers, only: [:edit,:show] 今回はいらない　アンスクライブをクワイトに統一
     get "/customers/my_page" => "customers#show"
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#quit'
+    get 'customers/quit' => 'customers#quit'
     patch 'customers/withdraw' => 'customers#withdraw'
+
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all_cart_items"
     resources :orders, only: [:new,:index,:show,:create]
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
-    resources :deliveries, only: [:index,:edit]
+    resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
   end
 
   # 管理者側のルーティング設定
