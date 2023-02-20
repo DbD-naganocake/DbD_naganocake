@@ -52,17 +52,17 @@
         </thead>
 
         <tbody>
-          <% @deliveries.each do |delivery| %>
-            <tr class="text">
-              <td><%= delivery.delivery_post %></td>
-              <td><%= delivery.delivery_address %></td>
-              <td><%= delivery.name %></td>
+          <%# @deliveries.each do |delivery| %>
+            <!--<tr class="text">-->
+              <td><%#= delivery.delivery_post %></td>
+              <td><%#= delivery.delivery_address %></td>
+              <td><%#= delivery.name %></td>
               <td>
-                <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-success col-5" %>
-                <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger col-5" %>
+                <%#= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-success col-5" %>
+                <%#= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger col-5" %>
               </td>
             </tr>
-          <% end %>
+          <%# end %>
         </tbody>
 
       </table>
