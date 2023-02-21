@@ -26,20 +26,22 @@ Rails.application.routes.draw do
 
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all_cart_items"
+    get "/orders/complete" => "orders#complete"
     resources :orders, only: [:new,:index,:show,:create]
     post "/orders/confirm" => "orders#confirm"
-    get "/orders/complete" => "orders#complete"
     resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
   end
 
   # 管理者側のルーティング設定
   namespace :admin do
-    get "" => "homes#top"
+    get "" => "orders#index"
 
     resources :items, only: [:new,:index,:create,:show,:edit,:update]
     resources :genres, only: [:index,:create,:edit,:update]
     resources :customers, only: [:index,:show,:edit]
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only:[:update]
+    
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
