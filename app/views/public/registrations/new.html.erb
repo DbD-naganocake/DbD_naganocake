@@ -1,6 +1,7 @@
+<div class="container">
 <div class="public-registrations">
   <div class="public-registrations-title">
-    <h3>新規会員登録</h3>
+    <h5>新規会員登録</h5>
   </div>
 
   <div class="public-registrations-table">
@@ -63,7 +64,7 @@
         <tr class="field">
           <th><%= f.label :"パスワード(確認用）" %></th>
           <td></td>
-          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "textlines-radius" %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", size: 25, class: "textlines-radius" %></td>
         </tr>
 
         <tr class="public-registrations-actions">
@@ -76,4 +77,5 @@
   </div>
 
   <%= render "public/shared/links" %>
+</div>
 </div>
