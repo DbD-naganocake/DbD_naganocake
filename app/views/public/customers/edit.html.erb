@@ -22,7 +22,7 @@
 
   <div class="row mt-5">
     <div class="col-sm-12 col-md-8 px-5 px-sm-0 mr-auto">
-      <%= form_with model: @customer, url: customer_path(@customer), method: :patch do |f| %>
+      <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
         <table class='table table-borderless'>
           <tr>
             <th>氏名</th>
@@ -45,7 +45,7 @@
           <tr>
             <th>郵便番号</th>
             <th>
-              <%= f.text_field :post_cord, placeholder: "郵便番号", size: 25, class: "textlines-radius" %>
+              <%= f.text_field :post_code, placeholder: "郵便番号", size: 25, class: "textlines-radius" %>
             </th>
           </tr>
           <tr>
@@ -75,7 +75,7 @@
               <%= f.submit '編集内容を保存', class: "btn btn-success" %>
             </div>
             <div class="form-inline col-3">
-              <a class="btn btn-danger" data-method="get" href="<%= customers_unsubscribe_path(id: @customer.id) %>">退会する</a>
+              <%= link_to "退会する", customers_quit_path, class:"btn btn-danger" %>
             </div>
           </div>
         </div>

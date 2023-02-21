@@ -1,6 +1,7 @@
+<div class="container">
 <div class="public-registrations">
   <div class="public-registrations-title">
-    <h3>新規会員登録</h3>
+    <h5>新規会員登録</h5>
   </div>
 
   <div class="public-registrations-table">
@@ -15,7 +16,7 @@
           <td><%= f.label :"(名)" %></td>
           <td><%= f.text_field :first_name, size: 25, class: "textlines-radius" %></td>
         </tr>
-  
+
         <tr class="public-registrations-field">
           <th><span>フリガナ</span></th>
           <td><%= f.label :"(セイ)" %></td>
@@ -23,32 +24,32 @@
           <td><%= f.label :"(メイ)" %></td>
           <td><%= f.text_field :kana_first, size: 25, class: "textlines-radius" %></td>
         </tr>
-  
+
         <tr class="public-registrations-field">
           <th><%= f.label :"メールアドレス" %></th>
           <td></td>
           <td><%= f.email_field :email, autofocus: true, size: 25, autocomplete: "email", class: "textlines-radius" %></td>
         </tr>
-  
+
         <tr>
           <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
           <td></td>
-          <td><%= f.text_field :post_cord, size: 25, class: "textlines-radius" %></td>
+          <td><%= f.text_field :post_code, size: 25, class: "textlines-radius" %></td>
         </tr>
-        
+
         <tr>
           <th><%= f.label :"住所" %></th>
           <td></td>
           <td colspan="3"><%= f.text_field :address, size: 70, class: "textlines-radius" %></td>
         </tr>
-  
+
         <tr>
           <th><%= f.label :"電話番号(ハイフンなし)" %></th>
           <td></td>
           <td><%= f.text_field :telephone, size: 25, class: "textlines-radius" %></td>
         </tr>
-        
-  
+
+
         <tr class="public-registrations-field">
           <th>
             <%= f.label :"パスワード" %>
@@ -59,13 +60,13 @@
           <td></td>
           <td><%= f.password_field :password, autocomplete: "new-password", size: 25, class: "textlines-radius" %></td>
         </tr>
-  
+
         <tr class="field">
           <th><%= f.label :"パスワード(確認用）" %></th>
           <td></td>
-          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "textlines-radius" %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", size: 25, class: "textlines-radius" %></td>
         </tr>
-  
+
         <tr class="public-registrations-actions">
           <td></td>
           <td></td>
@@ -74,6 +75,7 @@
       </table>
     <% end %>
   </div>
-  
+
   <%= render "public/shared/links" %>
+</div>
 </div>

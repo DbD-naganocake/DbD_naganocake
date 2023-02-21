@@ -1,13 +1,13 @@
 <dic class= "container">
   <div class= "row">
     <div class= "col-md-3 mt-5">
-      <%= render sidebar, genres: @genres %>
+      <%= render 'sidebar', genres: @genres %>
     </div>
     <div class= "col-md-9 my-5">
       <div class= "item_image">
-        <%= image_tag @item.get_image, size: "400×300" %>
+        <%= image_tag @item.get_image(400, 300) %>
         <div class= "item">
-          <h2><%= @item.name %></h2>
+          <h2><%= @item.item_name %></h2>
           <div class= "item_caption">
           <h3><%= @item.item_caption %></h3>
           </div>
@@ -21,8 +21,8 @@
         <%= form_with(model: @cart_item, url: cart_items_path(@cart_item)) do |f| %>
           <div class= "text-right mx-2">
             <%if @item.sale_status == true %>
-              <%= f.hidden_field :ite,_id, value: @item.id %>
-              <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
               <%= f.submit "カートに入れる", class: "btn btn-success" %>
             <% else %>
               <h3>売り切れ中</h3>
