@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
   # 注文情報入力
   def new
     @order = Order.new
+    #@address = current_customer.addresses
   end
 
   # 注文情報確認
