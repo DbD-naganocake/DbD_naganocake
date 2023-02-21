@@ -3,8 +3,7 @@ class Public::DeliveriesController < ApplicationController
 
   def index
     @delivery = Delivery.new
-    #binding.pry
-    #@deliveries = current_customer.deliveries
+    @deliveries = current_customer.deliveries
   end
 
   def edit
@@ -13,7 +12,7 @@ class Public::DeliveriesController < ApplicationController
 
   def create
     @delivery = Delivery.new(delivery_params)
-    @delivery.customer_id = current_customer.id
+    @delivery.customer = current_customer
     if @delivery.save
       redirect_to"/deliveries"
     else

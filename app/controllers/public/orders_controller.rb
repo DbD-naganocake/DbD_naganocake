@@ -3,7 +3,6 @@ class Public::OrdersController < ApplicationController
   # 注文情報入力
   def new
     @order = Order.new
-    #@address = current_customer.addresses
   end
 
   # 注文情報確認
@@ -42,6 +41,18 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     if @order.save
       @cart_items = current_customer.cart_items
+      
+      @cart_items.each do |cart_item|   #カートアイテムをひとつずつ取り出す
+        @order_detail = @order.order_details.new  #order_detailの空の箱を用意
+        @order_detail.order_id = @order.id  #orderのidをorder_detailのidに代入
+        @order_detail.item_id = cart_item.item_id  #カートアイテムのアイテムidをorder_detailのアイテムidに代入
+        @order_detail.price = cart_item.item.with_tax  #カートアイテムに保存されている金額をorder_detailのpriceheに代入(with_taxで税込み価格にしている)
+        @order_detail.quantity = cart_item.quantity  #カートアイテムに保存されている数量を @order_detailのquantityに代入
+        @order_detail.production_status = "waiting_start"
+        
+        @order_detail.save
+      end
+      
       @cart_items.destroy_all
       redirect_to orders_complete_path
     else
@@ -50,12 +61,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_lists = @order.order_lists
+    @order_lists = @order.order_details
   end
 
   private
