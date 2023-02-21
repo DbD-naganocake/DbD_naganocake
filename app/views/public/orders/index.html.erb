@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="row" style="margin-top:25px;">
-      <div class="order-text col-sm-12 px-sm-0">
+      <div class="order-text col-sm-12 px-sm-0 offset-sm-1">
         <h4><b>注文履歴一覧</b></h4>
       </div>
     </div>
@@ -38,7 +38,7 @@
                   <% end %>
                 </td>
                 <td><%= order.total %>円</td>
-                <td><%= order.order_status_i18n %></td>
+                <td><%= order.order_status %></td>
                 <td>
                   <%= link_to "表示する", order_path(order.id), class: "btn btn-success" %>
                 </td>
