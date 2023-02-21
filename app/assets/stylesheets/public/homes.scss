@@ -26,14 +26,23 @@
   margin-top :20px ;
 }
 
-.top-items {
+.new-items {
   display: flex;
   flex-wrap: wrap;
+}
+
+.top-item {
+  width: 30%;
+}
+
+.top-item p {
+  margin-bottom: 10px;
 }
 
 
 .about {
   text-align: center;
+  margin: 30px auto;
 }
 
 .about-title {
