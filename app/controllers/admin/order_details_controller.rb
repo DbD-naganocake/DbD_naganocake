@@ -7,13 +7,13 @@ before_action :authenticate_admin!
 
 
   def update
-    @order_list = OrderList.find(params[:id])
-    @order_list.update(order_list_params)
+    @order_detail = OrderDetail.find(params[:id])
+    @order_detail.update(order_detail_params)
   end
 
   private
-  def order_list_params
-    params.require(:order_list).permit(:production_status)
+  def order_detail_params
+    params.require(:order_detail).permit(:production_status)
   end
 
 end
