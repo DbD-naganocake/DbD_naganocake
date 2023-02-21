@@ -3,7 +3,8 @@ class Public::DeliveriesController < ApplicationController
 
   def index
     @delivery = Delivery.new
-    @deliveries = current_customer.deliveries.all
+    #binding.pry
+    #@deliveries = current_customer.deliveries
   end
 
   def edit

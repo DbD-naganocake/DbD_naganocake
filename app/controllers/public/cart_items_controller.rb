@@ -5,16 +5,17 @@ class Public::CartItemsController < ApplicationController
   end
   # カート内商品追加
   def create
-    @cart_items = CartItem.all
-    @cart_item = current_customer.cart_items.new(cart_item_params)
+    @cart_item = CartItem.new(cart_item_params)
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.quantity += params[:cart_item][:quantity].to_i
-      cart_item.save
-      redirect_to cart_items_path
+      cart_item.save!
     else
-      render 'index'
+      @cart_item.customer_id = current_customer.id
+      @cart_item.save!
     end
+    @cart_items = CartItem.all
+    redirect_to cart_items_path
   end
 
   # カート更新

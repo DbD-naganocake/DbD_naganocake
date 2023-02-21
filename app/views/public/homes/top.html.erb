@@ -1,12 +1,21 @@
 <div class="top">
   <div class= "container">
     <div class= "row">
+<<<<<<< HEAD
       
       <div class= "col-md-3 mt-3">
         <%= render "public/items/sidebar", genres: @genres %>
       </div>
       
       <div class= "col-md-9 my-3">
+=======
+
+      <div class= "col-md-3 mt-5">
+        <%= render "public/items/sidebar", genres: @genres %>
+      </div>
+
+      <div class= "col-md-9 my-5">
+>>>>>>> origin/develop
         <div class="top-text-img">
           <div class="top-text">
             <h4><b>
@@ -17,16 +26,16 @@
             </h4></b>
           </div>
         </div>
-       
+
         <div class="top-items">
           <h4><b>新着商品</b></h4>
-          
+
           <div class="new-item">
             <% @items.first(4).each do |item| %>
               <div class="top-item">
                 <p>
                   <%= link_to(item) do %>
-                    <%= image_tag item.get_image(120, 120) %>
+                    <%= image_tag item.get_image(150, 150) %>
                   <% end %>
                 </p>
                 <p><%= item.item_name %></p>
@@ -35,12 +44,12 @@
             <% end %>
           </div>
         </div>
-          
+
         <div class="float-right items-link">
           <%= link_to "全ての商品を見る >", items_path %>
         </div>
-      
-        
+
+
       </div>
     </div>
   </div>
