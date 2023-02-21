@@ -9,9 +9,9 @@
   </ul>
 <% end %>
 <div class="container px-5 px-sm-0">
-  <div class= "row">
+  <div class= "row" style="margin-top:25px;">
     <div class="col-md-10 offset-md-1">
-      <span style="background-color:#f4f4f4">　配送先編集　</span>
+      <h4 style="margin-bottom:25px;"><b>配送先編集</b></h4>
 
        <%= form_with model: @delivery, url: delivery_path(@delivery), method: :patch, local: true do |f| %>
          <table style="margin-bottom:40px">

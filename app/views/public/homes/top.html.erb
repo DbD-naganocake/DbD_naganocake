@@ -18,15 +18,15 @@
           </div>
         </div>
 
-        <div class = "top-items">
-          <h4><b>新着商品</b></h4>
+        <div class="top-items">
+          <h4 style="margin-bottom:25px;"><b>新着商品</b></h4>
 
-          <div class = row >
+          <div class = "row" >
             <% @items.first(4).each do |item| %>
-              <div class="top-item">
+              <div class="col top-item text-center">
                 <p>
                   <%= link_to(item) do %>
-                    <%= image_tag item.get_image(100, 100) %>
+                    <%= image_tag item.get_image(150, 150) %>
                   <% end %>
                 </p>
                 <p><%= item.item_name %></p>
