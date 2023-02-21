@@ -33,7 +33,7 @@
             <td class="table-active text">注文ステータス</td>
             <td class="light-text">
               <%= form_with model: @order, url: admin_order_path(@order), local: true,method: :patch do |f| %>
-                <%= f.select :order_status_i18n, [["入金待ち", "入金待ち"], ["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]], class: "form-control" %>
+                <%= f.select :order_status, [["入金待ち", "waiting_for_payment"], ["入金確認", "payment_confirmation"],["製作中", "in_production"],["発送準備中", "shipping_preparation"],["発送済み", "shipped"]], class: "form-control" %>
                 <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>

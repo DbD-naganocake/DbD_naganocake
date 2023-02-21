@@ -16,7 +16,11 @@ before_action :authenticate_admin!
 
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
+    @order_details = OrderDetail.where(order_id: params[:id])
+    if @order.update(order_params)
+      @order_details.update_all(production_status: 1) if @order.order_status == "payment_confirmation"
+    end
+    redirect_to admin_order_path(@order)
   end
 
   private
