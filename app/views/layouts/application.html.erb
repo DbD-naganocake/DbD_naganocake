@@ -8,9 +8,15 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--stylesheet_link_tagの場合cssファイルは、app/assets 配下のファイルを参照します。
+    stylesheet_pack_tagの場合は、app/javascript 配下のファイルを参照するようになります。-->
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <main>
+      <%= yield %>
+    </main>
+    <%= render "layouts/footer" %>
   </body>
 </html>

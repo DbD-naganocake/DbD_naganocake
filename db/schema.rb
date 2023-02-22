@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2023_02_15_060740) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id", null: false
-    t.integer "customers_id", null: false
+    t.integer "customer_id", null: false
     t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2023_02_15_060740) do
     t.string "first_name", default: "", null: false
     t.string "kana_last", default: "", null: false
     t.string "kana_first", default: "", null: false
-    t.string "post_cord", default: "", null: false
+    t.string "post_code", default: "", null: false
     t.string "address", default: "", null: false
     t.string "telephone", default: "", null: false
     t.boolean "is_deleted", default: false, null: false
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2023_02_15_060740) do
   end
 
   create_table "deliveries", force: :cascade do |t|
-    t.integer "customers_id", null: false
+    t.integer "customer_id", null: false
     t.string "name", default: "", null: false
     t.string "delivery_address", default: "", null: false
     t.string "delivery_post", default: "", null: false
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2023_02_15_060740) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customers_id", null: false
+    t.integer "customer_id", null: false
     t.string "post_code", default: "", null: false
     t.string "address", default: "", null: false
     t.string "name", default: "", null: false

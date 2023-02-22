@@ -1,2 +1,73 @@
-<h1>Public::Deliveries#index</h1>
-<p>Find me in app/views/public/deliveries/index.html.erb</p>
+<!--配送先登録/一覧　郵便番号（ハイフンなし）　住所　宛名　新規登録-->
+<!--郵便番号　住所　宛名 編集する　削除する-->
+
+<div class="container">
+ <h3 class="my-4 text title-text"><b>配送先登録/一覧</b></h4>
+<% if @delivery.errors.any? %>
+  <%= @delivery.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @delivery.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  <%= form_with model: @delivery, local:true do |f| %>
+
+    <div class="form_group row mt-5 mb-3 text">
+      <%= f.label :delivery_post, "郵便番号(ハイフンなし)", class: "col-form-label col-3" %>
+      <div class="col-3 text">
+        <%= f.text_field :delivery_post, class: "form-control", placeholder: "00000000" %>
+      </div>
+    </div>
+
+    <div class="form_group row mb-3 text">
+      <%= f.label :delivery_address, "住所", class: "col-form-label col-3" %>
+      <div class="col-7 text">
+        <%= f.text_field :delivery_address, class: "form-control", placeholder: "山梨県北杜市白州町自元寺" %>
+      </div>
+    </div>
+
+    <div class="form_group row mb-3 text">
+      <%= f.label :name, "宛名", class: "col-form-label col-3" %>
+      <div class="col-3 text">
+        <%= f.text_field :name, class: "form-control", placeholder: "馬場信春" %>
+      </div>
+      <div class="col-2 offset-2 text-right text">
+        <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="row my-5">
+    <div class="col-10">
+      <table class="table table-bordered table-hover">
+
+        <thead class="table-active text text-size">
+          <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @deliveries.each do |delivery| %>
+            <tr class="text align-items-center">
+              <td><%= delivery.delivery_post %></td>
+              <td><%= delivery.delivery_address %></td>
+              <td><%= delivery.name %></td>
+              <td class="text-center">
+                <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-success col-5" %>
+                <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger col-5" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+
+</div>
