@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row mb-3">
-    <h4 class="col-4 mr-5 mt-5">注文情報入力</h4>
+    <h4 class="col-4 mr-5 mt-5"><b>注文情報入力</b></h4>
   </div>
   <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
   <div class= "payment">
-    <div class="col-2 col-form-label">支払方法</div>
+    <div class="col-2 col-form-label"><b>支払方法</b></div>
     <div class="col-10 form-group">
       <%= f.radio_button :payment_method, 'credit_card' %>
       <%= f.label :payment_method, 'クレジットカード' %><br>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class= "delivery">
-    <div class="col-2 col-form-label">お届け先</div>
+    <div class="col-2 col-form-label"><b>お届け先</b></div>
     <div class="col-10 form-group">
       <%= f.radio_button :select_address, 0, {:checked => true} %>
       <%= f.label :customer_address, 'ご自身の住所' %><br>
@@ -28,7 +28,7 @@
     </div>
     <div class="col-10 form-group">
       <%= f.radio_button :select_address, 2 %>
-      <%= f.label :new_address, '新しいお届け先' %>
+      <b><%= f.label :new_address, '新しいお届け先' %></b>
     </div>
     <div class="row mb-3">
       <div class="col-3 mx-4"><%= f.label :post_code, '郵便番号(ハイフンなし)' %></div>
@@ -44,7 +44,7 @@
     </div>
     <div class="row">
       <div class="col-3 mx-3"></div>
-      <div class="col-4 text-center"><%= f.submit '確認画面へ進む', class: 'btn btn-primary' %></div>
+      <div class="col-4 text-center" style="margin-bottom:25px;"><%= f.submit '確認画面へ進む', class: 'btn btn-primary' %></div>
     </div>
   <% end %>
   </div>

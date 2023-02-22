@@ -2,18 +2,20 @@
   <%= render 'layouts/errors', obj: @genre %>
   <div class="row" style="margin-top:25px;">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
-      <h4>ジャンル一覧・追加</h4>
+      <h4><b>ジャンル一覧・追加</b></h4>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" style="margin-top:25px;">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
       <%= form_with model: [:admin, @genre] do |f| %>
       <table class="table table-borderless">
         <tr>
-          <%= f.label :"ジャンル名" %>
-          <%= f.text_field :genre_name, :placeholder => "ジャンル名" %>
-          <%= f.submit "新規登録", class: "btn btn-success" %>
+          <p>
+            <b><%= f.label :"ジャンル名" %> </b>
+            <%= f.text_field :genre_name, :placeholder => "ジャンル名" %> 
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </p>
         </tr>
       </table>
       <% end %>
@@ -22,7 +24,7 @@
 
   <div class="row px-5">
 　  <div class="col-md-6">
-      <table class="table">
+      <table class="table text-secondary">
         <thead>
           <tr>
             <th>ジャンル</th>

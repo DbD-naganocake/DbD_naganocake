@@ -10,28 +10,30 @@
         <% else %>
           商品一覧
         <% end %>
-        <span>(全<%= @items.total_count %>件中　<%= @items.count %></span>
+        <span>(全<%= @items.total_count %>件中 <%= @items.count %>件）</span>
       </h2>
-    </div>
-  </div>
-  <div class= "row">
-    <% @items.each do |item| %>
-      <div class= "col-md-3 mt-5">
-        <div class= "item_image">
-          <%= link_to item_path(item) do %>
-            <%= image_tag item.get_image(100, 100) %>
-          <% end %>
-        </div>
-        <p class= "item_name">
-          <%= item.item_name %>
-        </p>
-        <% if item.sale_status == true %>
-          <p>¥<%= item.without_tax.to_s(:delimited) %></p>
-        <% else %>
-          <p class= "soldout">売り切れ中</p>
+   
+      <div class= "row text-center">
+        <% @items.each do |item| %>
+          <div class= "col-md-3 mt-5">
+            <div class= "item_image">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_image(150, 150) %>
+              <% end %>
+            </div>
+            <p class= "item_name">
+              <%= item.item_name %>
+            </p>
+            <% if item.sale_status == true %>
+              <p>¥<%= item.without_tax.to_s(:delimited) %></p>
+            <% else %>
+              <p class= "soldout">売り切れ中</p>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
+      <%= paginate @items %>
+    </div>
+    
   </div>
-  <%= paginate @items %>
 </div>
