@@ -3,7 +3,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new
     @genre = Genre.all
   end
-  
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page])
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
@@ -24,7 +24,7 @@ class Admin::ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
   end
-  
+
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
@@ -33,7 +33,7 @@ class Admin::ItemsController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
 
   def item_params
