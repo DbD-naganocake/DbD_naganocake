@@ -9,8 +9,8 @@
 }
 
 .top-text-img {
-  width: 600px;
-  height: 400px;
+  width: 800px;
+  height: 450px;
   background-image: image-url('cake.jpg');
   background-position: center;
   background-size: cover;
@@ -26,14 +26,18 @@
   margin-top :20px ;
 }
 
-.top-items {
-  display: flex;
-  flex-wrap: wrap;
+.top-item {
+  width: 20%;
+}
+
+.top-item p {
+  margin-bottom: 10px;
 }
 
 
 .about {
   text-align: center;
+  margin: 30px auto;
 }
 
 .about-title {
