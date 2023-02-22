@@ -3,23 +3,23 @@
     <div class= "col-md-3 mt-5">
       <%= render "sidebar", genres: @genres %>
     </div>
-    <div class= "col-md-9 my-5">
+    <div class= "col-md-9 my-3">
       <h2 class= "product-headline head-line text-left">
         <% if @genre.present? %>
           <%= @genre.name %>
         <% else %>
           商品一覧
         <% end %>
-        <span>(全<%= @items.total_count %>件中　<%= @items.count %></span>
+        <span>(全<%= @items.total_count %>件中 <%= @items.count %>件)</span>
       </h2>
     </div>
   </div>
-  <div class= "row">
+  <div class= "row text-center">
     <% @items.each do |item| %>
       <div class= "col-md-3 mt-5">
         <div class= "item_image">
           <%= link_to item_path(item) do %>
-            <%= image_tag item.get_image(100, 100) %>
+            <%= image_tag item.get_image(150, 150) %>
           <% end %>
         </div>
         <p class= "item_name">
