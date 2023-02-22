@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
-  has_many :ordes
+  has_many :orders
   has_many :deliveries
 
   with_options presence: true do
