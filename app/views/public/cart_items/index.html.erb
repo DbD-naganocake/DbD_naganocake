@@ -2,7 +2,9 @@
   <div class= "row mb-3">
     <h4 class= "col-auto"><b>ショッピングカート</b></h4>
     <div class= "col text-right">
-      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger btn-sm" %>
+      <%= link_to destroy_all_cart_item_path(current_customer.id), method: :delete do %>
+        <button class="btn btn-danger btn-md">カートを空にする</button>
+      <% end %>
     </div>
   </div>
 

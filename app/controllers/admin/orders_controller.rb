@@ -2,7 +2,7 @@ class Admin::OrdersController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-    @orders = Order.page(params[:page]).per(10)
+    @orders = Order.page(params[:page]).per(10).order(created_at: "DESC")
   end
 
   def current_user_order
